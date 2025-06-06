@@ -1,7 +1,8 @@
-import { useEffect, useState } from 'react';
-import { fetchTopAnime, searchAnime } from '../Apis/fetchAnime';
-import MediaCard from '../components/MediaCard';
-import SearchBar from '../components/SearchBar';
+import { useEffect, useState } from "react";
+import { fetchTopAnime, searchAnime } from "../Apis/fetchAnime";
+import MediaCard from "../components/MediaCard";
+import SearchBar from "../components/SearchBar";
+import Loader from "./Loader";
 
 export default function Anime() {
   const [anime, setAnime] = useState([]);
@@ -11,7 +12,7 @@ export default function Anime() {
   }, []);
 
   const handleSearch = async (query) => {
-    if (query.trim() === '') {
+    if (query.trim() === "") {
       fetchTopAnime().then(setAnime);
     } else {
       const results = await searchAnime(query);
@@ -19,11 +20,15 @@ export default function Anime() {
     }
   };
 
+  if (!anime) {
+    return <Loader />;
+  }
+
   return (
     <div className="p-6 bg-gray-100 dark:bg-gray-900 min-h-screen">
       <SearchBar onSearch={handleSearch} placeholder="Search anime..." />
       <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6">
-        {anime.map(item => (
+        {anime.map((item) => (
           <MediaCard
             key={item.mal_id}
             id={item.mal_id}

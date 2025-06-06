@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { fetchAnimeDetails } from "../Apis/fetchAnime";
 import { motion } from "framer-motion";
+import Loader from "./Loader";
 
 export default function AnimeDetails() {
   const { id } = useParams();
@@ -13,11 +14,7 @@ export default function AnimeDetails() {
   }, [id]);
 
   if (!anime) {
-    return (
-      <div className="p-6 text-center text-gray-500 dark:text-gray-300 animate-pulse">
-        Loading...
-      </div>
-    );
+    return (<Loader/>);
   }
 
   return (

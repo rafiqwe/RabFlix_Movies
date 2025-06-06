@@ -1,7 +1,8 @@
-import { useEffect, useState } from 'react';
-import { fetchPopularMovies, searchMovies } from '../Apis/fetchMovies';
-import MediaCard from '../components/MediaCard';
-import SearchBar from '../components/SearchBar';
+import { useEffect, useState } from "react";
+import { fetchPopularMovies, searchMovies } from "../Apis/fetchMovies";
+import MediaCard from "../components/MediaCard";
+import SearchBar from "../components/SearchBar";
+import Loader from "./Loader";
 
 export default function Movies() {
   const [movies, setMovies] = useState([]);
@@ -11,7 +12,7 @@ export default function Movies() {
   }, []);
 
   const handleSearch = async (query) => {
-    if (query.trim() === '') {
+    if (query.trim() === "") {
       fetchPopularMovies().then(setMovies);
     } else {
       const results = await searchMovies(query);
@@ -19,13 +20,15 @@ export default function Movies() {
     }
   };
   console.log(movies);
-  
 
+  if (!movies.length) {
+    return <Loader />;
+  }
   return (
     <div className="p-6 bg-gray-100 dark:bg-gray-900 min-h-screen">
       <SearchBar onSearch={handleSearch} placeholder="Search movies..." />
       <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6">
-        {movies.map(movie => (
+        {movies.map((movie) => (
           <MediaCard
             key={movie.id}
             id={movie.id}
