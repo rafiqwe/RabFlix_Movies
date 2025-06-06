@@ -17,6 +17,9 @@ export default function Movies() {
       fetchPopularMovies().then(setMovies);
     } else {
       const results = await searchMovies(query);
+      if (results.length === 0) {
+         return (<div>No results found</div>);
+      }
       setMovies(results);
     }
   };

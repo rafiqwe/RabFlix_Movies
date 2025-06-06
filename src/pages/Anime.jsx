@@ -16,6 +16,9 @@ export default function Anime() {
       fetchTopAnime().then(setAnime);
     } else {
       const results = await searchAnime(query);
+      if (results.length === 0) {
+         return (<div>No results found</div>);
+      }
       setAnime(results);
     }
   };
