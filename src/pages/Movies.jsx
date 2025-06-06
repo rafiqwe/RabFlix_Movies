@@ -21,14 +21,14 @@ export default function Movies() {
     }
   };
   const navigation = useNavigation();
-  if (!movies.length || navigation.state === 'loading') {
+  if (!movies.length || navigation.state === "loading") {
     return <Loader />;
   }
 
   return (
     <div className="px-2 bg-gray-100 dark:bg-gray-900 min-h-screen">
       <SearchBar onSearch={handleSearch} placeholder="Search movies..." />
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6 ">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-6 ">
         {movies.map((movie) => (
           <MediaCard
             key={movie.id}
