@@ -6,7 +6,7 @@ export default function Home() {
 
   return (
     <motion.div
-      className="absolute left-0  w-full flex flex-col items-center justify-center min-h-screen gap-10 text-white px-6 overflow-hidden "
+      className="absolute left-0 2xl:relative  max-w-[1920px] mx-auto w-full flex flex-col items-center justify-center min-h-screen gap-10 text-white px-6 overflow-hidden "
       initial={{ opacity: 0, y: 40 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, ease: 'easeOut' }}

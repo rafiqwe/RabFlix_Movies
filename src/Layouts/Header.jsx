@@ -1,12 +1,13 @@
 import { NavLink } from "react-router-dom";
 import { motion } from "framer-motion";
 import { useState } from "react";
+import ThemeToggle from "../components/ThemeToggle";
 
 export default function Header() {
   const [isClick, setisClick] = useState(false);
   return (
     <motion.nav
-      className="bg-white dark:bg-gray-800 shadow-md p-4 flex justify-between items-center md:sticky top-0 z-50 relative max-w-[1920px] mx-auto w-full lg:px-20 sm:px-10 px-5 md:px-13"
+      className="dark:from-gray-900 dark:to-gray-800 bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-white shadow-md p-4 flex justify-between items-center md:sticky top-0 z-10000 relative max-w-[1920px] mx-auto w-full lg:px-20 sm:px-10 px-5 md:px-13"
       initial={{ y: -30, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
@@ -17,17 +18,40 @@ export default function Header() {
       >
         RABFLIX
       </NavLink>
-
-      <div
-        className={`md:space-x-6  text-lg font-medium top-16  flex flex-col gap-4 absolute  justify-center items-center w-full bg-gray-800 overflow-hidden  ${
-          isClick ? "h-50" : "h-0"
-        } left-0 md:bg-transparent md:flex-row md:static md:top-0 md:gap-0 md:items-center md:w-auto transition-all md:h-auto duration-400 ease-in-out`}
-      >
-        <AnimatedLink to="/" label="Home" color="blue"  onClick={() => setisClick(false)} />
-        <AnimatedLink to="/movies" label="Movies" color="blue"  onClick={() => setisClick(false)}/>
-        <AnimatedLink to="/anime" label="Anime" color="pink" onClick={() => setisClick(false)} />
-        <AnimatedLink to="/favorites" label="Favorites" color="green"  onClick={() => setisClick(false)}/>
+      <div className="items-center flex gap-7">
+        <div
+          className={`md:space-x-6  text-lg font-medium top-16  flex flex-col gap-4 absolute  justify-center items-center w-full bg-gray-800 overflow-hidden  ${
+            isClick ? "h-50" : "h-0"
+          } left-0 md:bg-transparent md:flex-row md:static md:top-0 md:gap-0 md:items-center md:w-auto transition-all md:h-auto duration-400 ease-in-out`}
+        >
+          <AnimatedLink
+            to="/"
+            label="Home"
+            color="blue"
+            onClick={() => setisClick(false)}
+          />
+          <AnimatedLink
+            to="/movies"
+            label="Movies"
+            color="blue"
+            onClick={() => setisClick(false)}
+          />
+          <AnimatedLink
+            to="/anime"
+            label="Anime"
+            color="pink"
+            onClick={() => setisClick(false)}
+          />
+          <AnimatedLink
+            to="/favorites"
+            label="Favorites"
+            color="green"
+            onClick={() => setisClick(false)}
+          />
+        </div>
+        <ThemeToggle />
       </div>
+
       <div className="md:hidden flex items-center">
         <button
           className="text-gray-600 dark:text-gray-300 focus:outline-none"
@@ -93,5 +117,3 @@ const AnimatedLink = ({ to, label, color }) => {
     </NavLink>
   );
 };
-
-

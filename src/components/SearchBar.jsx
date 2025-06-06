@@ -1,6 +1,6 @@
 export default function SearchBar({ onSearch, placeholder }) {
   return (
-    <div className="mb-6 flex justify-center mt-6">
+    <div className="mb-6 flex justify-center mt-6 dark:from-gray-900 dark:to-gray-800 text-gray-900 dark:text-white">
       <input
         type="text"
         onChange={(e) => onSearch(e.target.value)}
