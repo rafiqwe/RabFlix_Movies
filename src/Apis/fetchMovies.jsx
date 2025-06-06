@@ -26,3 +26,5 @@ export const fetchMovieDetails = async (id) => {
   });
   return response.data;
 };
+
+
