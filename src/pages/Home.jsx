@@ -6,19 +6,19 @@ export default function Home() {
 
   return (
     <motion.div
-      className="relative flex flex-col items-center justify-center min-h-screen gap-10 text-white px-6 overflow-hidden"
+      className="absolute left-0  w-full flex flex-col items-center justify-center min-h-screen gap-10 text-white px-6 overflow-hidden "
       initial={{ opacity: 0, y: 40 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, ease: 'easeOut' }}
     >
       {/* Background image with gradient overlay */}
-      <div className="absolute inset-0">
+      <div className="absolute inset-0 w-full h-full left-0 top-0">
         <img
           src="/banner.jpg"
           alt="Netflix Background"
-          className="w-full h-full object-cover"
+          className="w-full h-full object-cover "
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent"></div>
+        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent"></div>  
       </div>
 
       {/* Main Content */}

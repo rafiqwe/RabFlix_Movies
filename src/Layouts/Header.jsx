@@ -56,7 +56,7 @@ export default function Header() {
 // Subcomponent for animated links
 const AnimatedLink = ({ to, label, color }) => (
   <NavLink
-  onClick={() => setisClick(false)}
+    // onClick={() => setisClick(false)}
     to={to}
     className={({ isActive }) =>
       `relative transition-colors duration-200 text-${color}-600 hover:text-${color}-700 after:absolute after:left-0 after:-bottom-1 after:w-0 hover:after:w-full after:h-[2px] after:bg-${color}-500 after:transition-all after:duration-300 ${
