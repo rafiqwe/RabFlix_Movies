@@ -23,10 +23,10 @@ export default function Header() {
           isClick ? "h-50" : "h-0"
         } left-0 md:bg-transparent md:flex-row md:static md:top-0 md:gap-0 md:items-center md:w-auto transition-all md:h-auto duration-400 ease-in-out`}
       >
-        <AnimatedLink to="/" label="Home" color="blue" />
-        <AnimatedLink to="/movies" label="Movies" color="blue" />
-        <AnimatedLink to="/anime" label="Anime" color="pink" />
-        <AnimatedLink to="/favorites" label="Favorites" color="green" />
+        <AnimatedLink to="/" label="Home" color="blue"  onClick={() => setisClick(false)} />
+        <AnimatedLink to="/movies" label="Movies" color="blue"  onClick={() => setisClick(false)}/>
+        <AnimatedLink to="/anime" label="Anime" color="pink" onClick={() => setisClick(false)} />
+        <AnimatedLink to="/favorites" label="Favorites" color="green"  onClick={() => setisClick(false)}/>
       </div>
       <div className="md:hidden flex items-center">
         <button
@@ -54,16 +54,44 @@ export default function Header() {
 }
 
 // Subcomponent for animated links
-const AnimatedLink = ({ to, label, color }) => (
-  <NavLink
-    // onClick={() => setisClick(false)}
-    to={to}
-    className={({ isActive }) =>
-      `relative transition-colors duration-200 text-${color}-600 hover:text-${color}-700 after:absolute after:left-0 after:-bottom-1 after:w-0 hover:after:w-full after:h-[2px] after:bg-${color}-500 after:transition-all after:duration-300 ${
-        isActive ? `text-${color}-700` : ""
-      }`
-    }
-  >
-    {label}
-  </NavLink>
-);
+const AnimatedLink = ({ to, label, color }) => {
+  const baseColors = {
+    blue: {
+      text: "text-blue-600",
+      hover: "hover:text-blue-700",
+      underline: "after:bg-blue-500",
+      active: "text-blue-700",
+    },
+    pink: {
+      text: "text-pink-600",
+      hover: "hover:text-pink-700",
+      underline: "after:bg-pink-500",
+      active: "text-pink-700",
+    },
+    green: {
+      text: "text-green-600",
+      hover: "hover:text-green-700",
+      underline: "after:bg-green-500",
+      active: "text-green-700",
+    },
+  };
+
+  const styles = baseColors[color] || baseColors.blue;
+
+  return (
+    <NavLink
+      to={to}
+      className={({ isActive }) =>
+        [
+          "relative transition-colors duration-200 after:absolute after:left-0 after:-bottom-1 after:w-0 hover:after:w-full after:h-[2px] after:transition-all after:duration-300",
+          styles.hover,
+          isActive ? styles.active + " font-semibold" : "",
+        ].join(" ")
+      }
+    >
+      {label}
+    </NavLink>
+  );
+};
+
+
