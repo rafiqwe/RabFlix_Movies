@@ -23,7 +23,7 @@ export default function MediaCard({ id, title, image, rating, type }) {
     <motion.div
       whileHover={{ scale: 1.05 }}
       whileTap={{ scale: 0.98 }}
-      className="relative"
+      className="relative w-full flex justify-center items-center flex-wrap"
     >
       <Link to={`/${type}s/${id}`}>
         <motion.div

@@ -20,14 +20,14 @@ export default function Anime() {
     }
   };
 
-  if (!anime) {
+  if (!anime.length) {
     return <Loader />;
   }
 
   return (
-    <div className="p-6 bg-gray-100 dark:bg-gray-900 min-h-screen">
+    <div className="px-2 bg-gray-100 dark:bg-gray-900 min-h-screen">
       <SearchBar onSearch={handleSearch} placeholder="Search anime..." />
-      <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6">
+      <div className="grid  sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6">
         {anime.map((item) => (
           <MediaCard
             key={item.mal_id}

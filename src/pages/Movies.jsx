@@ -3,6 +3,7 @@ import { fetchPopularMovies, searchMovies } from "../Apis/fetchMovies";
 import MediaCard from "../components/MediaCard";
 import SearchBar from "../components/SearchBar";
 import Loader from "./Loader";
+import { useNavigation } from "react-router-dom";
 
 export default function Movies() {
   const [movies, setMovies] = useState([]);
@@ -19,15 +20,15 @@ export default function Movies() {
       setMovies(results);
     }
   };
-  console.log(movies);
-
-  if (!movies.length) {
+  const navigation = useNavigation();
+  if (!movies.length || navigation.state === 'loading') {
     return <Loader />;
   }
+
   return (
-    <div className="p-6 bg-gray-100 dark:bg-gray-900 min-h-screen">
+    <div className="px-2 bg-gray-100 dark:bg-gray-900 min-h-screen">
       <SearchBar onSearch={handleSearch} placeholder="Search movies..." />
-      <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6 ">
         {movies.map((movie) => (
           <MediaCard
             key={movie.id}

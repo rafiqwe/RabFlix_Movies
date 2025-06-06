@@ -10,7 +10,7 @@ export default function Header() {
       transition={{ duration: 0.6, ease: "easeOut" }}
     >
       <NavLink to="/" className="text-2xl font-extrabold text-red-500 tracking-wide">
-        RabFlix
+        RABFLIX
       </NavLink>
 
       <div className="space-x-6 text-lg font-medium">
