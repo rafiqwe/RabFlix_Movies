@@ -89,7 +89,7 @@ export default function AnimeDetails() {
             <div className="flex flex-wrap gap-4 mt-8">
               <motion.button
                 onClick={() => navigate(-1)}
-                className="bg-green-600 hover:bg-green-700 text-white font-semibold px-6 py-2 rounded-xl shadow-lg"
+                className="bg-green-600 hover:bg-green-700 text-white font-semibold px-6 py-2 rounded-xl shadow-lg cursor-pointer"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 transition={{ type: "spring", stiffness: 300 }}

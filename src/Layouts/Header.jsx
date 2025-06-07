@@ -20,7 +20,7 @@ export default function Header() {
       </NavLink>
       <div className="items-center flex gap-7">
         <div
-          className={`md:space-x-6  text-lg font-medium top-16  flex flex-col gap-4 absolute  justify-center items-center w-full bg-gray-800 overflow-hidden  ${
+          className={`md:space-x-6  text-lg font-medium top-16  flex flex-col gap-4 absolute  justify-center items-center w-full bg-gray-100 dark:bg-gray-800 overflow-hidden  ${
             isClick ? "h-50" : "h-0"
           } left-0 md:bg-transparent md:flex-row md:static md:top-0 md:gap-0 md:items-center md:w-auto transition-all md:h-auto duration-400 ease-in-out`}
         >
@@ -78,7 +78,7 @@ export default function Header() {
 }
 
 // Subcomponent for animated links
-const AnimatedLink = ({ to, label, color }) => {
+const AnimatedLink = ({ to, label, color, onClick }) => {
   const baseColors = {
     blue: {
       text: "text-blue-600",
@@ -105,6 +105,7 @@ const AnimatedLink = ({ to, label, color }) => {
   return (
     <NavLink
       to={to}
+      onClick={onclick}
       className={({ isActive }) =>
         [
           "relative transition-colors duration-200 after:absolute after:left-0 after:-bottom-1 after:w-0 hover:after:w-full after:h-[2px] after:transition-all after:duration-300",
